@@ -6,10 +6,14 @@ SERVER_ADDR = 'http://localhost'
 PAGES_PATH = '/pa/'
 OUTPUT_PATH = 'output/'
 TEST_CASES_FILE = 'testCases.json'
+USE_SESSION = False
 
 
 if not os.path.exists(OUTPUT_PATH):
   os.mkdir(OUTPUT_PATH)
+
+if USE_SESSION:
+  requests = requests.Session()
 
 jsonString = open(TEST_CASES_FILE, 'r').read()
 
