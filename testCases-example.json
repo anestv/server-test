@@ -1,0 +1,39 @@
+[
+  {
+    "file" : "register.php",
+    "get" : [{}],
+    "post" : [
+      {},
+      {
+        "ToS" : "1"
+      },
+      {
+        "ToS" : "1",
+        "username" : "invalidUserName!@#",
+        "password" : "small",
+        "real" : "Real"
+      },
+      {
+        "ToS" : "1",
+        "username" : "existing",
+        "password" : "horse staple battery",
+        "real" : "An existing (test) user"
+      }
+    ]
+  },
+  {
+    "file" : "login.php",
+    "get" : [{}],
+    "post" : [
+      {},
+      {
+        "user" : "notexisting",
+        "pass" : "doesnt matter"
+      },
+      {
+        "user" : "existing",
+        "pass" : "horse staple battery"
+      }
+    ]
+  }
+]
