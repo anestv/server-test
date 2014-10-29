@@ -1,5 +1,6 @@
 
 import json, os, configparser
+from re import sub
 import external.requests as requests
 
 try:
@@ -52,13 +53,17 @@ def sendPost(url, data, fout):
 
 
 for page in allPages:
-  path = SERVER_ADDR + PAGES_PATH + page['file']
-  output = open(OUTPUT_PATH + page['file'] + '.txt', 'w')
+  url = SERVER_ADDR + PAGES_PATH + page['file']
   
-  for get in page['get']:
-    sendGet(path, get, output)
+  filename = sub(r'[\\\|\*"?:/<>%]', '!', page['file'])
+  output = open(OUTPUT_PATH + filename + '.txt', 'w')
   
-  for post in page['post']:
-    sendPost(path, post, output)
+  if 'get' in page:
+    for get in page['get']:
+      sendGet(url, get, output)
+  
+  if 'post' in page:
+    for post in page['post']:
+      sendPost(url, post, output)
   
   output.close()
