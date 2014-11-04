@@ -1,39 +1,67 @@
 [
   {
-    "file" : "register.php",
-    "get" : [{}],
-    "post" : [
-      {},
-      {
-        "ToS" : "1"
-      },
-      {
-        "ToS" : "1",
-        "username" : "invalidUserName!@#",
-        "password" : "small",
-        "real" : "Real"
-      },
-      {
-        "ToS" : "1",
-        "username" : "existing",
-        "password" : "horse staple battery",
-        "real" : "An existing (test) user"
-      }
-    ]
+    "page": "get",
+    "expect": {
+      "status": 200,
+      "Content-Type": "application/json"
+    }
   },
   {
-    "file" : "login.php",
-    "get" : [{}],
-    "post" : [
-      {},
-      {
-        "user" : "notexisting",
-        "pass" : "doesnt matter"
-      },
-      {
-        "user" : "existing",
-        "pass" : "horse staple battery"
-      }
-    ]
+    "page": "html",
+    "expect": {
+      "Content-Type": "text/html; charset=utf-8"
+    }
+  },
+  {
+    "page": "post",
+    "post": {
+      "this": "is some post data",
+      "don't": "you agree?"
+    }
+  },
+  {
+    "page": "post",
+    "get": {
+      "wow": "we even got query params!"
+    },
+    "post": {
+      "data": "some post data as always!+"
+    }
+  },
+  {
+    "page": "put",
+    "expect": {
+      "status": 405,
+      "Allow": "OPTIONS, PUT"
+    }
+  },
+  {
+    "page": "status/253",
+    "expect": {
+      "status": 253
+    }
+  },
+  {
+    "page": "status/418",
+    "expect": {
+      "status": 418
+    }
+  },
+  {
+    "page": "response-headers",
+    "get": {
+      "Allow": "me to introduce myself",
+      "MyHeader": "is not as awsome as I'd like"
+    },
+    "expect": {
+      "Allow": "me to introduce myself",
+      "MyHeader": "is not as awsome as I'd like"
+    }
+  },
+  {
+    "page": "bytes/314",
+    "expect": {
+      "Content-Length": "314"
+    }
   }
 ]
