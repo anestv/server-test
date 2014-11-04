@@ -11,6 +11,7 @@ class request:
     self.post = post
     self.expect = expect
     self.kind = 'POST' if post else 'GET'
+    self.session = 0
   
   def checkExpects(self, r):
     
@@ -21,7 +22,7 @@ class request:
       expStatus = 200
     
     if r.status_code != expStatus:
-      print(self.kind + ' request to ' + self.url + ' respoded with '
+      print(self.kind + ' request to ' + self.url + ' responded with '
             + str(r.status_code) + ' instead of ' + str(expStatus))
       exit(1)
     

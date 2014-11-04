@@ -1,6 +1,5 @@
 
-import json, os, configparser
-from re import sub
+import json, configparser
 from myRequest import request
 
 print('# Starting server-test...')
