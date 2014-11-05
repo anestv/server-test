@@ -1,3 +1,11 @@
+'''
+Copyright 2014 Anestis Varsamidis
+Licensed under the EUPL, Version 1.1 only (the "Licence");
+You may not use this work except in compliance with the Licence.
+You may obtain a copy of the Licence at:
+
+https://joinup.ec.europa.eu/software/page/eupl
+'''
 
 import json, configparser
 from myRequest import request
