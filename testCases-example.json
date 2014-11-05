@@ -31,8 +31,7 @@
   {
     "page": "put",
     "expect": {
-      "status": 405,
-      "Allow": "OPTIONS, PUT"
+      "status": 405
     }
   },
   {
